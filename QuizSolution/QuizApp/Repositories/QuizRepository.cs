@@ -42,13 +42,14 @@ namespace QuizApp.Repositories
 
         public Quiz GetById(int key)
         {
-            var product = _context.Quizs.SingleOrDefault(u => u.Id == key);
-            return quiz;
+            return _context.Quizs
+        .Include(q => q.Questions) // Eager load questions
+        .FirstOrDefault(q => q.QuizId == key);
         }
 
         public Quiz Update(Quiz entity)
         {
-            var quiz = GetById(entity.Id);
+            var quiz = GetById(entity.QuizId);
             if (quiz != null)
             {
                 _context.Entry<Quiz>(quiz).State = EntityState.Modified;
@@ -59,5 +60,3 @@ namespace QuizApp.Repositories
         }
     }
 }
-
-

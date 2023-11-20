@@ -1,6 +1,6 @@
 ﻿using QuizApp.Interfaces;
-using QuizApp.Models.DTOs;
 using QuizApp.Models;
+using QuizApp.Models.DTOs;
 using System.Security.Cryptography;
 using System.Text;
 using static QuizApp.Interfaces.ITokenServie;

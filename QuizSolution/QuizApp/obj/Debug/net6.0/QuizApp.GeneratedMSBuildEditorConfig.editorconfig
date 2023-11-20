@@ -9,45 +9,45 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = QuizApp
 build_property.RootNamespace = QuizApp
-build_property.ProjectDir = D:\hexaware\Day10\QuizSolution\QuizApp\
+build_property.ProjectDir = D:\hexaware\Project_QuizApp\QuizSolution\QuizApp\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\hexaware\Day10\QuizSolution\QuizApp
+build_property.MSBuildProjectDirectory = D:\hexaware\Project_QuizApp\QuizSolution\QuizApp
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/hexaware/Day10/QuizSolution/QuizApp/Views/Home/Index.cshtml]
+[D:/hexaware/Project_QuizApp/QuizSolution/QuizApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/hexaware/Day10/QuizSolution/QuizApp/Views/Home/Privacy.cshtml]
+[D:/hexaware/Project_QuizApp/QuizSolution/QuizApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/hexaware/Day10/QuizSolution/QuizApp/Views/Shared/Error.cshtml]
+[D:/hexaware/Project_QuizApp/QuizSolution/QuizApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/hexaware/Day10/QuizSolution/QuizApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/hexaware/Project_QuizApp/QuizSolution/QuizApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/hexaware/Day10/QuizSolution/QuizApp/Views/User/Login.cshtml]
+[D:/hexaware/Project_QuizApp/QuizSolution/QuizApp/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/hexaware/Day10/QuizSolution/QuizApp/Views/User/Register.cshtml]
+[D:/hexaware/Project_QuizApp/QuizSolution/QuizApp/Views/User/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/hexaware/Day10/QuizSolution/QuizApp/Views/_ViewImports.cshtml]
+[D:/hexaware/Project_QuizApp/QuizSolution/QuizApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/hexaware/Day10/QuizSolution/QuizApp/Views/_ViewStart.cshtml]
+[D:/hexaware/Project_QuizApp/QuizSolution/QuizApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/hexaware/Day10/QuizSolution/QuizApp/Views/Shared/_Layout.cshtml]
+[D:/hexaware/Project_QuizApp/QuizSolution/QuizApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-5pfx37we21

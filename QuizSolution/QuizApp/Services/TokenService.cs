@@ -1,9 +1,10 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using QuizApp.Interfaces;
 using QuizApp.Models.DTOs;
-using static QuizApp.Interfaces.ITokenServie;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using static QuizApp.Interfaces.ITokenServie;
 
 namespace QuizApp.Services
 {
@@ -20,7 +21,8 @@ namespace QuizApp.Services
         {
             var claims = new List<Claim>()
             {
-                new Claim(JwtRegisteredClaimNames.NameId,user.Username)
+                new Claim(JwtRegisteredClaimNames.NameId,user.Username),
+                new Claim("role",user.Role)
             };
             var cred = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
             var tokenDescription = new SecurityTokenDescriptor
@@ -35,9 +37,6 @@ namespace QuizApp.Services
 
         }
 
-
-
     }
+
 }
-
-

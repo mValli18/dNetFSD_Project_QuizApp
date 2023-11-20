@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\hexaware\\Day10\\QuizSolution\\QuizApp\\QuizApp.csproj": {}
+    "D:\\hexaware\\Project_QuizApp\\QuizSolution\\QuizApp\\QuizApp.csproj": {}
   },
   "projects": {
-    "D:\\hexaware\\Day10\\QuizSolution\\QuizApp\\QuizApp.csproj": {
+    "D:\\hexaware\\Project_QuizApp\\QuizSolution\\QuizApp\\QuizApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\hexaware\\Day10\\QuizSolution\\QuizApp\\QuizApp.csproj",
+        "projectUniqueName": "D:\\hexaware\\Project_QuizApp\\QuizSolution\\QuizApp\\QuizApp.csproj",
         "projectName": "QuizApp",
-        "projectPath": "D:\\hexaware\\Day10\\QuizSolution\\QuizApp\\QuizApp.csproj",
+        "projectPath": "D:\\hexaware\\Project_QuizApp\\QuizSolution\\QuizApp\\QuizApp.csproj",
         "packagesPath": "C:\\Users\\personal\\.nuget\\packages\\",
-        "outputPath": "D:\\hexaware\\Day10\\QuizSolution\\QuizApp\\obj\\",
+        "outputPath": "D:\\hexaware\\Project_QuizApp\\QuizSolution\\QuizApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\personal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,6 +53,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.24, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
