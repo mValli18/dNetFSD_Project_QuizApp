@@ -50,7 +50,16 @@ namespace QuizApp
                      }
                  });
             });
-
+            #region CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("reactApp", opts =>
+                {
+                    opts.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                });
+            });
+            #endregion
+            #region Utilities
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -62,11 +71,12 @@ namespace QuizApp
                         ValidateIssuerSigningKey = true
                     };
                 });
+            
             builder.Services.AddDbContext<QuizContext>(opts =>
             {
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("conn"));
             });
-            //builder.Logging.AddLog4Net();
+            
             builder.Services.AddScoped<IRepository<string, User>, UserRepository>();
             builder.Services.AddScoped<IRepository<int, Quiz>, QuizRepository>();
             builder.Services.AddScoped<IRepository<int, Questions>, QuestionRepository>();
@@ -79,6 +89,7 @@ namespace QuizApp
             builder.Services.AddScoped<IQuestionService, QuestionService>();
             builder.Services.AddScoped<IQuizResultService, QuizResultService>();
             builder.Services.AddSingleton<TimerService>();
+            #endregion
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -88,9 +99,10 @@ namespace QuizApp
                 app.UseSwaggerUI();
             }
             app.UseStaticFiles();
+         
 
             app.UseRouting();
-
+            app.UseCors("reactApp");
             app.UseAuthentication();
             app.UseAuthorization();
 

@@ -5,58 +5,60 @@ using QuizApp.Models.DTOs;
 
 namespace QuizApp.Controllers
 {
-    public class UserController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UserController : ControllerBase
     {
-        
-            private readonly IUserService _userService;
+        private readonly IUserService _userService;
 
-            public UserController(IUserService userService)
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+        [HttpPost]
+        public ActionResult Register(UserDTO viewModel)
+        {
+            string message = "";
+            try
             {
-                _userService = userService;
+                var user = _userService.Register(viewModel);
+                if (user != null)
+                {
+                    return Ok(user);
+                }
             }
-            public IActionResult Register()
+            catch (DbUpdateException exp)
             {
-                return View();
+                message = "Duplicate username";
             }
-            [HttpPost]
-            public IActionResult Register(UserDTO viewModel)
+            catch (Exception)
             {
-                try
-                {
-                    var user = _userService.Register(viewModel);
-                    if (user != null)
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-                catch (DbUpdateException exp)
-                {
-                    ViewBag.Message = "User name already exits";
-                }
-                catch (Exception)
-                {
-                    ViewBag.Message = "Invalid data. Coudld not register";
-                    throw;
-                }
-                //ViewData["Message"] = "Invalid data. Coudld not register";
 
-                return View();
             }
-            public IActionResult Login()
+            return BadRequest(message);
+        }
+        [HttpPost]
+        [Route("Login")]
+        public ActionResult Login(UserDTO viewModel)
+        {
+            string message = "";
+            try
             {
-                return View();
-            }
-            [HttpPost("login")]
-            public IActionResult Login(UserDTO userDTO)
-            {
-                var result = _userService.Login(userDTO);
-                if (result != null)
+                var user = _userService.Login(viewModel);
+                if (user != null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return Ok(user);
                 }
-                ViewData["Message"] = "Invalid username or password";
-                return View();
+                else
+                {
+                    message = "invalid credentials";
+                }
             }
+            catch (Exception ex)
+            {
+                message = "error occured during login";
+            }
+            return BadRequest(message);
         }
     }
-
+}
