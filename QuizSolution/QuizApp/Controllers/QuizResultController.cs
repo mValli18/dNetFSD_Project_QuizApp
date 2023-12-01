@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using QuizApp.Exceptions;
 using QuizApp.Interfaces;
@@ -11,6 +12,7 @@ namespace QuizApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("reactApp")]
     public class QuizResultController : ControllerBase
     {
         private readonly IQuizResultService _quizResultService;
@@ -34,7 +36,7 @@ namespace QuizApp.Controllers
                 return NotFound($"No quiz results found for Quiz ID {quizId}. {e.Message}");
             }
         }
-        [Authorize]
+        //[Authorize]
         [HttpGet("results-with-total-score/{username}/{quizId}")]
         public ActionResult<QuizResultsWithTotalScoreDTO> GetResultsWithTotalScoreByUserAndQuiz(string username, int quizId)
         {
@@ -57,7 +59,7 @@ namespace QuizApp.Controllers
             }
         }
 
-        [Authorize]
+       // [Authorize]
         [HttpGet("totalscore/{quizId}/{username}")]
         public ActionResult<int> GetTotalScoreForUserInQuiz(int quizId, string username)
         {

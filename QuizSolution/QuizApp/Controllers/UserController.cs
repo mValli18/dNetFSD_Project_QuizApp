@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuizApp.Interfaces;
 using QuizApp.Models.DTOs;
@@ -7,6 +8,7 @@ namespace QuizApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("reactApp")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;

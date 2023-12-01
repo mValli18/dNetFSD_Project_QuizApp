@@ -1,0 +1,58 @@
+.registerForm {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .btn-login{
+    background-color:green;
+    color:white;
+    margin-right:auto;
+    margin-left:auto;
+    text-align:center;
+    width:300px;
+    position:relative;
+  }
+  .form-control {
+    margin-bottom: 15px;
+  }
+  
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 8px;
+    margin-top: 5px;
+  }
+  
+  .form-select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .button {
+    margin-right: 10px;
+  }
+  
+  /* Optional: Add styling for the Cancel button */
+  .btn-danger {
+    background-color: #dc3545;
+  }
+  
+  /* Optional: Add hover effect to buttons */
+  .button:hover, .btn-danger:hover {
+    filter: brightness(90%);
+    cursor: pointer;
+  }
+  
+  /* Optional: Add media query for responsiveness */
+  @media (max-width: 600px) {
+    .registerForm {
+      max-width: 100%;
+    }
+  }
+  

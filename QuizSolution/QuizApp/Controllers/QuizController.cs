@@ -157,7 +157,7 @@ namespace QuizApp.Controllers
                 return BadRequest($"Failed to retrieve quizzes. {e.Message}");
             }
         }
-        [Authorize]
+       // [Authorize]
         [HttpGet("quiz/{quizId}/questions")]
         public ActionResult<IEnumerable<QuestionDTO>> GetQuestionsForQuiz(int quizId)
         {
@@ -171,7 +171,7 @@ namespace QuizApp.Controllers
                 return NotFound($"No questions found for Quiz ID {quizId}. {e.Message}");
             }
         }
-        [Authorize]
+        //[Authorize]
         [HttpPost("evaluate/{quizId}")]
         public ActionResult<QuizResultDTO> EvaluateAnswer(int quizId, [FromBody] AnswerDTO answerDTO)
         {
@@ -209,7 +209,7 @@ namespace QuizApp.Controllers
             }
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("leaderboard/{quizId}")]
         public ActionResult<IEnumerable<LeaderboardEntryDTO>> GetLeaderboard(int quizId)
         {
@@ -222,7 +222,7 @@ namespace QuizApp.Controllers
 
             return Ok(leaderboard);
         }
-        [Authorize(Roles = "Creator")]
+        //[Authorize(Roles = "Creator")]
         [HttpDelete("{quizId}")]
         public IActionResult DeleteQuiz(int quizId)
         {
@@ -242,7 +242,7 @@ namespace QuizApp.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
-        [Authorize]
+       // [Authorize]
         [HttpPut("{quizId}")]
         public IActionResult UpdateQuiz(int quizId, [FromBody] Quiz updatedQuiz)
         {
