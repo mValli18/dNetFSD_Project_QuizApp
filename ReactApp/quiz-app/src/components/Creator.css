@@ -1,0 +1,25 @@
+.inputcontainer{
+    max-width: 600px;
+      margin: auto;
+      padding: 20px;
+  }
+  .input-container-controller {
+      text-align: center;
+      margin-top: 100px; 
+      margin-left:350px;
+      border:2px solid #000;
+      display:inline-block;
+      padding:20px;
+    }
+    .btn-question {
+      background-color: #007bff;
+      color: #fff;
+      padding:10px 20px;
+      margin-top:10px;
+    }
+    .btn-quiz {
+      background-color: #007bff;
+      color: #fff;
+      padding:10px 20px;
+      margin-top:10px;
+    }

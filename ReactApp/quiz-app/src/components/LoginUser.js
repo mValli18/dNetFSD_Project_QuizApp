@@ -39,7 +39,7 @@ function LoginUser(){
             return;
         }
         
-        axios.post("http://localhost:5252/api/User/Login",{
+        axios.post("http://localhost:5252/api/User/login",{
             username: username,
             role:	role,
             password:password
@@ -74,15 +74,7 @@ function LoginUser(){
             <label className="form-control">Password</label>
             <input type="password" className="form-control" value={password}
                     onChange={(e)=>{setPassword(e.target.value)}}/>
-            <label className="alert alert-danger">{passwordError}</label>
-            <label className="form-control">Role</label>
-            <select className="form-select" onChange={(e) => { setRole(e.target.value) }}>
-                <option value="select">Select Role</option>
-                {roles.map((r) =>
-                    <option value={r} key={r}>{r}</option>
-                )}
-            </select>
-            <br/>
+            <label className="alert alert-danger">{passwordError}</label><br/>
             <button className="btn btn-primary button" onClick={Login}>Login</button>
             
             <button className="btn btn-danger button">Cancel</button>

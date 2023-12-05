@@ -16,10 +16,13 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import logo from '../quiz.jpg';
-import QuizsAlias from './Quizs';
+import Quizs from './Quizs';
+import Leaderboard from './Leaderboard';
+import Profile from './UserProfile';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HistoryIcon from '@mui/icons-material/History';
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -122,25 +125,30 @@ export default function Navigation() {
         <ListItem disablePadding >
                <img src={logo} alt="logo" width="200px" height="200px" />
         </ListItem>
+        <Link to="/userprofile" >
         <ListItem Padding >
         <ListItemButton>
                <ListItemIcon><AccountCircleIcon/></ListItemIcon>
                 <ListItemText primary="Profile" />
         </ListItemButton>
         </ListItem>
+        </Link>
         <ListItem Padding >
         <ListItemButton>
                <ListItemIcon><HistoryIcon/></ListItemIcon>
                 <ListItemText primary="QuizHistory" />
                 </ListItemButton>
         </ListItem>
+        
+
+        <Link to="/leaderboard" >
         <ListItem Padding >
         <ListItemButton>
                <ListItemIcon>< LeaderboardIcon/></ListItemIcon>
                 <ListItemText primary="Leaderboard" />
                 </ListItemButton>
         </ListItem>
-        
+        </Link>
         
         </List>
     
@@ -149,7 +157,7 @@ export default function Navigation() {
       </Drawer>
       <Main open={open}>
        
-      
+     <Quizs/>
       </Main>
      
     </Box>

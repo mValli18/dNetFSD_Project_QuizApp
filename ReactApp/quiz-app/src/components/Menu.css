@@ -1,0 +1,58 @@
+/* Menu.css */
+.full-page {
+    background: url('../quiz.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.8); /* Add transparency to the navbar */
+  }
+  
+  .logo-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+  
+  .nav-item {
+    list-style-type: none;
+    margin: 0 0.5rem;
+  }
+  
+  .nav-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .nav-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .navbar-text {
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.8); /* Add transparency to the background */
+    padding: 1rem;
+    max-width: 400px;
+    border-radius: 10px;
+  }
+  
+  .transparent-box {
+    background-color: rgba(255, 255, 255, 0.5); /* Add transparency to the boxes */
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+  }
+  

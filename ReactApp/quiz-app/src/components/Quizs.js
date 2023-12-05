@@ -58,8 +58,8 @@ function Quizs() {
 
       // Apply duration filter
       if (
-        quiz.time < durationFilter[0] ||
-        quiz.time > durationFilter[1]
+        quiz.timelimit < durationFilter[0] ||
+        quiz.timelimit > durationFilter[1]
       ) {
         return false;
       }
@@ -156,7 +156,7 @@ function Quizs() {
                     Description: {quiz.description}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Time: {quiz.time}
+                    Timelimit: {quiz.timelimit}
                   </Typography>
                   <Button
                     variant="contained"

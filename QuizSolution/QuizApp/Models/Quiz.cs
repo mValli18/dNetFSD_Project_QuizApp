@@ -13,7 +13,7 @@ namespace QuizApp.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string Category { get; set; }
-       
+       public int Timelimit { get; set; }
         public ICollection<Questions>? Questions { get; set; }
 
     }
