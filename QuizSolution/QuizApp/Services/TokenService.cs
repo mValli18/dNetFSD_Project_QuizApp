@@ -4,7 +4,7 @@ using QuizApp.Models.DTOs;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using static QuizApp.Interfaces.ITokenServie;
+using QuizApp.Services;
 
 namespace QuizApp.Services
 {

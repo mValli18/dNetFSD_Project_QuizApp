@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuizApp.Interfaces;
 using QuizApp.Models.DTOs;
-
 namespace QuizApp.Controllers
 {
     [Route("api/[controller]")]
@@ -17,7 +16,7 @@ namespace QuizApp.Controllers
         {
             _userService = userService;
         }
-        [HttpPost]
+        [HttpPost("register")]
         public ActionResult Register(UserDTO viewModel)
         {
             string message = "";
@@ -37,29 +36,20 @@ namespace QuizApp.Controllers
             {
 
             }
+
+
             return BadRequest(message);
         }
-        [HttpPost]
-        [Route("Login")]
+        [HttpPost("login")]
         public ActionResult Login(UserDTO viewModel)
         {
             string message = "";
-            try
+            var result = _userService.Login(viewModel);
+            if (result != null)
             {
-                var user = _userService.Login(viewModel);
-                if (user != null)
-                {
-                    return Ok(user);
-                }
-                else
-                {
-                    message = "invalid credentials";
-                }
+                return Ok(result);
             }
-            catch (Exception ex)
-            {
-                message = "error occured during login";
-            }
+            message = "Invalid username or password";
             return BadRequest(message);
         }
     }

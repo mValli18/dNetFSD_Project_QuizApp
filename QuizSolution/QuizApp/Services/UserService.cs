@@ -3,7 +3,7 @@ using QuizApp.Models;
 using QuizApp.Models.DTOs;
 using System.Security.Cryptography;
 using System.Text;
-using static QuizApp.Interfaces.ITokenServie;
+using static QuizApp.Interfaces.ITokenService;
 
 namespace QuizApp.Services
 {
@@ -17,6 +17,7 @@ namespace QuizApp.Services
             _repository = repository;
             _tokenService = tokenService;
         }
+
         public UserDTO Login(UserDTO userDTO)
         {
             var user = _repository.GetById(userDTO.Username);
@@ -29,9 +30,16 @@ namespace QuizApp.Services
                     if (user.Password[i] != userpass[i])
                         return null;
                 }
-                userDTO.Token = _tokenService.GetToken(userDTO);
-                userDTO.Password = "";
-                return userDTO;
+
+                // Fetch user's role from the database
+                var userFromDatabase = _repository.GetById(userDTO.Username);
+                if (userFromDatabase != null)
+                {
+                    userDTO.Role = userFromDatabase.Role;
+                    userDTO.Token = _tokenService.GetToken(userDTO);
+                    userDTO.Password = "";
+                    return userDTO;
+                }
             }
             return null;
         }
@@ -53,8 +61,6 @@ namespace QuizApp.Services
                 return userDTO;
             }
             return null;
-
         }
-
     }
 }

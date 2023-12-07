@@ -45,6 +45,10 @@
   background-color: #333;
   color: white;
 }
+.left {
+text-align: right;
+width:300px;
+}
 
 .navbar-title a {
   text-decoration: none;
@@ -64,10 +68,10 @@
 
 
 .background-image {
-  background: url('./quizh2.jpg') center/cover no-repeat fixed;
+  background: url('./quizbackground.jpg') center/cover no-repeat fixed;
   height: 100vh;
   
-}
+} 
 
 
 

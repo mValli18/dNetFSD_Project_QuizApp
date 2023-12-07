@@ -61,10 +61,11 @@ function Menu() {
         
 
         {<div className="home">
-    {/* Background Image */}
+     <div classname="left">
     <div className="background-image"></div>
+    </div>
 
-    {/* Cards */}
+    
     <div className="cards">
       <QuizTakerCard />
       <QuizCreatorCard />

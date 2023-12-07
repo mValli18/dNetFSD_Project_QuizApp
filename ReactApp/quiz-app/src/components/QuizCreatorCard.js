@@ -8,7 +8,7 @@ const QuizCreatorCard = () => (
 
     <hr/>
     <p>A visionary tool designed to transform the ordinary into the extraordinary. Unleash your imagination as you navigate through an intuitive interface, making every quiz an immersive experience. Get ready to redefine engagement, captivate your audience, and embark on a journey where curiosity meets knowledge in the most captivating way imaginable. Welcome to a new era of interactive discovery!</p>
-    <Link to="/creator">
+    <Link to="/navcreator">
       <center><button>Create</button></center>
     </Link>
   </div>

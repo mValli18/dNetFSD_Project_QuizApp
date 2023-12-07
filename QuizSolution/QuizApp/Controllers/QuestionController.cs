@@ -23,7 +23,7 @@ namespace QuizApp.Controllers
             _questionService = questionService;
             _quizResultService = quizResultService;
         }
-       // [Authorize(Roles = "Creator")]
+       [Authorize(Roles = "Creator")]
         [HttpPost("add")]
         public IActionResult AddToQuiz(QuestionDTO questionDTO)
         {
@@ -40,7 +40,7 @@ namespace QuizApp.Controllers
             }
             return BadRequest(errorMessage);
         }
-        //[Authorize]
+        [Authorize(Roles ="Creator")]
         [HttpPut("update/{quizId}/question/{questionId}")]
         public IActionResult UpdateQuestion(int quizId, int questionId, [FromBody] Questions updatedQuestion)
         {
@@ -55,7 +55,7 @@ namespace QuizApp.Controllers
             }
         }
 
-       // [Authorize]
+        [Authorize]
         [HttpGet("getAll")]
         public IActionResult GetAllQuestions()
         {
@@ -71,7 +71,7 @@ namespace QuizApp.Controllers
             }
             return BadRequest(errorMessage);
         }
-       //[Authorize]
+       [Authorize]
         [HttpGet("byquiz/{quizId}")]
         public ActionResult<IEnumerable<Questions>> GetQuestionsByQuizId(int quizId)
         {
@@ -89,7 +89,7 @@ namespace QuizApp.Controllers
             return NotFound($"No questions found for Quiz ID {quizId}." + errorMessage);
         }
 
-       // [Authorize(Roles = "Creator")]
+        [Authorize(Roles = "Creator")]
         [HttpDelete("Remove")]
         public IActionResult RemoveFromQuiz(int quizid, int questionid)
         {

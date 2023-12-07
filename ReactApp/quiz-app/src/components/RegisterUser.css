@@ -1,58 +1,100 @@
-.registerForm {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  .btn-login{
-    background-color:green;
-    color:white;
-    margin-right:auto;
-    margin-left:auto;
-    text-align:center;
-    width:300px;
-    position:relative;
-  }
-  .form-control {
-    margin-bottom: 15px;
-  }
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.registration-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 400px;
+  text-align: center;
+}
+
+.form-control {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.button {
+  width: 40%;
+  padding: 10px;
+  background-color: purple;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: purple;
+}
+
+.cancel-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background-color: #c82333;
+}
+
+.logout-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.image-card {
+  border-radius: 15px;
+  overflow: hidden;
   
-  .alert-danger {
-    color: #721c24;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    border-radius: 4px;
-    padding: 8px;
-    margin-top: 5px;
-  }
-  
-  .form-select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-  }
-  
-  .button {
-    margin-right: 10px;
-  }
-  
-  /* Optional: Add styling for the Cancel button */
-  .btn-danger {
-    background-color: #dc3545;
-  }
-  
-  /* Optional: Add hover effect to buttons */
-  .button:hover, .btn-danger:hover {
-    filter: brightness(90%);
-    cursor: pointer;
-  }
-  
-  /* Optional: Add media query for responsiveness */
-  @media (max-width: 600px) {
-    .registerForm {
-      max-width: 100%;
-    }
-  }
-  
+}
+
+.image-content {
+  width: 400%;
+  border-radius: 15px;
+}
+
+/* Additional styles for the "Already have an account? Please login" section */
+.btn-login {
+  margin-top: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: #218838;
+}

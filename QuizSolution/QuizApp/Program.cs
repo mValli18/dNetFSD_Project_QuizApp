@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
-using static QuizApp.Interfaces.ITokenServie;
 
 namespace QuizApp
 {
@@ -22,6 +21,7 @@ namespace QuizApp
             //builder.Services.AddControllersWithViews();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
+            #region Swagger
             builder.Services.AddSwaggerGen(opt =>
             {
                 opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -50,6 +50,8 @@ namespace QuizApp
                      }
                  });
             });
+            #endregion
+
             #region CORS
             builder.Services.AddCors(options =>
             {
@@ -71,12 +73,11 @@ namespace QuizApp
                         ValidateIssuerSigningKey = true
                     };
                 });
-            
             builder.Services.AddDbContext<QuizContext>(opts =>
             {
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("conn"));
             });
-            
+           // builder.Logging.AddLog4Net();
             builder.Services.AddScoped<IRepository<string, User>, UserRepository>();
             builder.Services.AddScoped<IRepository<int, Quiz>, QuizRepository>();
             builder.Services.AddScoped<IRepository<int, Questions>, QuestionRepository>();
@@ -99,10 +100,12 @@ namespace QuizApp
                 app.UseSwaggerUI();
             }
             app.UseStaticFiles();
-         
 
             app.UseRouting();
+
             app.UseCors("reactApp");
+
+
             app.UseAuthentication();
             app.UseAuthorization();
 

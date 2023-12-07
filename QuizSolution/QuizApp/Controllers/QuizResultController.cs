@@ -36,7 +36,7 @@ namespace QuizApp.Controllers
                 return NotFound($"No quiz results found for Quiz ID {quizId}. {e.Message}");
             }
         }
-        //[Authorize]
+        [Authorize]
         [HttpGet("results-with-total-score/{username}/{quizId}")]
         public ActionResult<QuizResultsWithTotalScoreDTO> GetResultsWithTotalScoreByUserAndQuiz(string username, int quizId)
         {
@@ -59,7 +59,7 @@ namespace QuizApp.Controllers
             }
         }
 
-       // [Authorize]
+        [Authorize]
         [HttpGet("totalscore/{quizId}/{username}")]
         public ActionResult<int> GetTotalScoreForUserInQuiz(int quizId, string username)
         {

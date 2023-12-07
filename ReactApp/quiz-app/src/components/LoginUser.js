@@ -1,11 +1,14 @@
+import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate,Link } from "react-router-dom";
 import "./Login.css";
-function LoginUser(){
-    const roles =["Creator","Participant"];
+import image from '../quizb1.jpg';
+
+function LoginUser() {
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
-    const [role,setRole] = useState("");
+    const navigate = useNavigate();
     var [usernameError,setUsernameError]=useState("");
     var [passwordError,setPasswordError]=useState("");
     var checkUSerData = ()=>{
@@ -25,10 +28,6 @@ function LoginUser(){
         else{
             setPasswordError("");
         }
-        if(role==='Select Role'){
-            return false;
-        }
-        return true;
     }
     const Login = (event)=>{
         event.preventDefault();
@@ -41,7 +40,6 @@ function LoginUser(){
         
         axios.post("http://localhost:5252/api/User/login",{
             username: username,
-            role:	role,
             password:password
         })
         .then((userData)=>{
@@ -49,6 +47,11 @@ function LoginUser(){
             localStorage.setItem("token",token);
             var username=userData.data.username;
             localStorage.setItem("username",username);
+            var role=userData.data.role;
+            localStorage.setItem("role",role);
+            alert('Welcome to the quizapp =>'+username);
+            navigate("/")
+            
         })
         .catch((err)=>{
             if(err.response.data==="Invalid username or password"){
@@ -60,29 +63,64 @@ function LoginUser(){
     const logout = () => {
         // Remove the token from local storage
         localStorage.removeItem("token");
+        localStorage.removeItem("username");
+        localStorage.removeItem("role");
         // Show an alert
         alert("You are logged out successfully.");
+        navigate("/logout");
       };
-    
-    return(
+
+  return (
+    <div className="login-container">
+      <div className="login-card">
         <form className="loginForm">
-            <h1>Login</h1>
-            <label className="form-control">Username</label>
-            <input type="text" className="form-control" value={username}
-                    onChange={(e)=>{setUsername(e.target.value)}}/>
-           <label className="alert alert-danger">{usernameError}</label>
-            <label className="form-control">Password</label>
-            <input type="password" className="form-control" value={password}
-                    onChange={(e)=>{setPassword(e.target.value)}}/>
-            <label className="alert alert-danger">{passwordError}</label><br/>
-            <button className="btn btn-primary button" onClick={Login}>Login</button>
-            
-            <button className="btn btn-danger button">Cancel</button>
-            <button className="btn btn-danger button" onClick={logout}>
-                Logout
-            </button>
+          <h1>Login</h1>
+          <br/>
+          <label >Username :</label>
+          <br/>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Please enter Username"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+          
+          {usernameError && (
+            <label className="alert alert-danger">{usernameError}</label>
+          )}
+          <label >Password :</label>
+          <br/>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Please enter Password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+          {passwordError && (
+            <label className="alert alert-danger">{passwordError}</label>
+          )}
+          <br />
+          <button className="btn btn-primary button" onClick={Login}>
+            Login
+          </button>
+          <h6 style={{ whiteSpace: 'nowrap' }}><pre>Don't have an account? </pre><Link to="/register">Register</Link></h6>
         </form>
-    );
+      </div>
+      <div className="image-card">
+        <img
+          src={image}
+          alt="Your Image"
+          className="image-content"
+        />
+      </div>
+    </div>
+  );
 }
 
 export default LoginUser;

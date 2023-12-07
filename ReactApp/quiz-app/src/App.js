@@ -63,6 +63,8 @@ import UpdateQuiz from './components/UpdateQuiz';
 import DeleteQuiz from './components/DeleteQuiz';
 import Creator from './components/Creator';
 import QuizList from './QuizList';
+import Leaderboard from './components/Leaderboard';
+import NavCreator from './components/NavCreator';
 
 
 function App() {
@@ -77,6 +79,8 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='/register' element={<RegisterUser  />} />
           <Route path="/navbar" element={<Protected><Navbar/></Protected>}/>
+          <Route path="/navcreator" element={<Protected><NavCreator/></Protected>}/>
+
           <Route path="/questions" element={<Protected>
             <Questions/>
           </Protected>} />
@@ -92,6 +96,7 @@ function App() {
           <Route path="/updateQuiz" element={<Protected><UpdateQuiz/></Protected>}/>
           <Route path="/deleteQuiz" element={<Protected><DeleteQuiz/></Protected>}/>
           <Route path="/quizList" element={<Protected><QuizList/></Protected>}/>
+          <Route path="/leaderboard" element={<Protected><Leaderboard/></Protected>}/>
           <Route path="/logout" element={<LoginUser />}/>
         </Routes>
       </div>
