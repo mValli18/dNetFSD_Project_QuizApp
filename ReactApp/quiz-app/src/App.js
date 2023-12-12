@@ -65,6 +65,9 @@ import Creator from './components/Creator';
 import QuizList from './QuizList';
 import Leaderboard from './components/Leaderboard';
 import NavCreator from './components/NavCreator';
+import UserProfile from './components/UserProfile';
+import QuizReports from './components/QuizReport'
+import QuizIdReport from './components/QuizIdReport';
 
 
 function App() {
@@ -80,7 +83,8 @@ function App() {
           <Route path='/register' element={<RegisterUser  />} />
           <Route path="/navbar" element={<Protected><Navbar/></Protected>}/>
           <Route path="/navcreator" element={<Protected><NavCreator/></Protected>}/>
-
+       
+          
           <Route path="/questions" element={<Protected>
             <Questions/>
           </Protected>} />
@@ -89,6 +93,8 @@ function App() {
             <Protected><QuestionsByQuiz/></Protected>}/>
           <Route path="/creator" element={<Protected><Creator/></Protected>}/>
           <Route path="/quizResult" element={<Protected><QuizResult/></Protected>}/>
+          <Route path="/userprofile" element={<Protected><UserProfile/></Protected>}/>
+          
           <Route path="/updateQuestions" element={<Protected>
             <UpdateQuestion/>
           </Protected>}/>
@@ -96,6 +102,8 @@ function App() {
           <Route path="/updateQuiz" element={<Protected><UpdateQuiz/></Protected>}/>
           <Route path="/deleteQuiz" element={<Protected><DeleteQuiz/></Protected>}/>
           <Route path="/quizList" element={<Protected><QuizList/></Protected>}/>
+          <Route path="/quizreport" element={<Protected><QuizReports/></Protected>}/>
+          <Route path="/quizidreport" element={<Protected><QuizIdReport/></Protected>}/>
           <Route path="/leaderboard" element={<Protected><Leaderboard/></Protected>}/>
           <Route path="/logout" element={<LoginUser />}/>
         </Routes>

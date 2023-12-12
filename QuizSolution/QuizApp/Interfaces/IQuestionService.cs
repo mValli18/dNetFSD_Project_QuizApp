@@ -6,9 +6,9 @@ namespace QuizApp.Interfaces
     public interface IQuestionService
     {
         bool AddToQuiz(QuestionDTO questionDTO);
-        public void UpdateQuestion(int quizId, int questionId, Questions updatedQuestion);
+        public void UpdateQuestion(int questionId, QuestionDTO updatedQuestion);
 
-        bool RemoveFromQuiz(int quizid, int questionid);
+        bool RemoveFromQuiz(int questionid);
         IList<QuestionDTO> GetAllQuestions();
         IList<Questions> GetQuestionsByQuizId(int quizId);
     }

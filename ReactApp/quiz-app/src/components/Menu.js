@@ -51,7 +51,7 @@ function Menu() {
       <div className="App">
         {<nav className="navbar1">
       <div className="navbar-title">
-        <Link to="/"> SS Quiz App</Link>
+         <h3>SS Quiz App</h3>
       </div>
       <div className="navbar-links">
         <Link to="/login">Login</Link>

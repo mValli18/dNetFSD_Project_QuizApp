@@ -1,32 +1,41 @@
-﻿using QuizApp.Exceptions;
+﻿// QuestionService.cs
+using QuizApp.Exceptions;
 using QuizApp.Interfaces;
 using QuizApp.Models;
 using QuizApp.Models.DTOs;
 using QuizApp.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace QuizApp.Services
 {
+    // Implementation of IQuestionService
     public class QuestionService : IQuestionService
     {
         private readonly IRepository<int, Questions> _questionRepository;
         private readonly IRepository<int, Quiz> _quizRepository;
         private readonly IRepository<int, QuizResult> _quizResultRepository;
 
-        public QuestionService(IRepository<int, Questions> QuestionRepository,
-            IRepository<int, Quiz> QuizRepository, IRepository<int, QuizResult> QuizResultRepository)
+        // Constructor to inject dependencies
+        public QuestionService(IRepository<int, Questions> questionRepository,
+            IRepository<int, Quiz> quizRepository, IRepository<int, QuizResult> quizResultRepository)
         {
             Console.WriteLine("QuestionService constructor called");
-            _questionRepository = QuestionRepository;
-            _quizRepository = QuizRepository;
-            _quizResultRepository = QuizResultRepository;
+            _questionRepository = questionRepository;
+            _quizRepository = quizRepository;
+            _quizResultRepository = quizResultRepository;
         }
+
+        // Add a question to a quiz
         public bool AddToQuiz(QuestionDTO questionDTO)
         {
-
-            var Check = _questionRepository.GetAll().FirstOrDefault(c => c.QuestionId == questionDTO.QuestionId);
+            var existingQuestion = _questionRepository.GetAll().FirstOrDefault(c => c.QuestionId == questionDTO.QuestionId);
             int questionId = 0;
-            if (Check == null)
+
+            if (existingQuestion == null)
             {
+                // If the question doesn't exist, add it to the repository
                 var question = _questionRepository.Add(new Questions
                 {
                     QuizId = questionDTO.QuizId,
@@ -36,13 +45,21 @@ namespace QuizApp.Services
                     Option3 = questionDTO.Option3,
                     Option4 = questionDTO.Option4,
                     Answer = questionDTO.Answer,
+                    QuestionId = questionDTO.QuestionId,
                 });
+
                 questionId = questionDTO.QuestionId;
             }
             else
-                questionId = Check.QuestionId;
+            {
+                // If the question already exists, use its ID
+                questionId = existingQuestion.QuestionId;
+            }
+
             return true;
         }
+
+        // Get all questions
         public IList<QuestionDTO> GetAllQuestions()
         {
             var questions = _questionRepository.GetAll();
@@ -56,11 +73,14 @@ namespace QuizApp.Services
                 Option1 = q.Option1,
                 Option2 = q.Option2,
                 Option3 = q.Option3,
-                Option4 = q.Option4
+                Option4 = q.Option4,
+                Answer = q.Answer
             }).ToList();
 
             return questionDTOs;
         }
+
+        // Get questions for a specific quiz
         public IList<Questions> GetQuestionsByQuizId(int quizId)
         {
             if (quizId != 0)
@@ -71,6 +91,7 @@ namespace QuizApp.Services
                     .Where(q => q.QuizId == quizId)
                     .OrderBy(q => q.QuestionId)
                     .ToList();
+
                 if (quizQuestions.Count != 0)
                 {
                     // Map entity list to DTO list with required properties
@@ -83,52 +104,62 @@ namespace QuizApp.Services
                         Option3 = q.Option3,
                         Option4 = q.Option4
                     }).ToList();
+
                     return questions;
                 }
+
+                // Throw an exception if no questions are available for the specified quiz
                 throw new NoQuestionsAvailableException();
             }
 
             return null;
         }
 
-
+        // Get a question by its ID
         public Questions GetQuestionById(int questionId)
         {
             return _questionRepository.GetById(questionId);
         }
-        private bool CheckIfQuestionAlreadyPresent(int questionId, int quizId)
+
+        // Check if a question is already associated with a quiz
+        private bool CheckIfQuestionAlreadyPresent(int questionId)
         {
             var question = _questionRepository.GetAll()
-                .FirstOrDefault(ci => ci.QuizId == quizId && ci.QuestionId == questionId);
-            return question != null ? true : false;
+                .FirstOrDefault(ci => ci.QuestionId == questionId);
+
+            return question != null;
         }
-        public bool RemoveFromQuiz(int quizid, int questionid)
+
+        // Remove a question from a quiz
+        public bool RemoveFromQuiz(int questionid)
         {
             var questionCheck = _questionRepository.GetAll().FirstOrDefault(c => c.QuestionId == questionid);
+            bool CheckQuizQuestion = CheckIfQuestionAlreadyPresent(questionid);
 
-            bool CheckQuizQuestion = CheckIfQuestionAlreadyPresent(questionid, quizid);
             if (CheckQuizQuestion)
             {
+                // If the question is associated with the quiz, delete it from the repository
                 var result = _questionRepository.Delete(questionid);
                 return true;
-
             }
+
             return false;
         }
-        public void UpdateQuestion(int quizId, int questionId, Questions updatedQuestion)
+
+        // Update a question in a quiz
+        public void UpdateQuestion(int questionId, QuestionDTO updatedQuestion)
         {
             if (updatedQuestion == null)
             {
                 throw new ArgumentNullException(nameof(updatedQuestion), "Updated question data is null.");
             }
 
-
             // Ensure the question with the provided IDs exists
             var existingQuestion = _questionRepository.GetById(questionId);
 
-            if (existingQuestion == null || existingQuestion.QuizId != quizId)
+            if (existingQuestion == null)
             {
-                throw new InvalidOperationException($"Question with ID {questionId} not found in Quiz with ID {quizId}.");
+                throw new InvalidOperationException($"Question with ID {questionId} not found .");
             }
 
             // Update the properties of the existing question with the values from the updatedQuestion
@@ -142,7 +173,5 @@ namespace QuizApp.Services
             // Update the question in the repository
             _questionRepository.Update(existingQuestion);
         }
-
-
     }
 }

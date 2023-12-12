@@ -82,13 +82,14 @@ function Quizs() {
     setDurationFilter(newValue);
   };
 
-  const handleTakeQuiz = (quizId) => {
-    // Handle taking the quiz, you can navigate to a new page or show a modal, etc.
-    console.log(`Taking quiz with ID: ${quizId}`);
+  const handleTakeQuiz = async (quizId,timelimit) => {
+    // Pass the quizId as state to the QuestionsByQuizId component
+    console.log("the time limit is",timelimit);
+    navigate("/questionsByquiz", { state: { quizId,timelimit } });
+  };
   
     // Navigate to the QuestionsByQuizId component
-    navigate('/questionsByquiz', { state: { quizId } });
-  };
+   
 
   const handleResetFilters = () => {
     setCategoryFilter("All");
@@ -135,9 +136,14 @@ function Quizs() {
             aria-labelledby="duration-slider"
           />
         </div>
-        <Button variant="contained" onClick={handleResetFilters}>
-          Reset Filters
-        </Button>
+        <Button
+  variant="contained"
+  onClick={handleResetFilters}
+  style={{ width: '150px', height: '40px' }}
+>
+  Reset Filters
+</Button>
+
       </div>
       <hr />
       {filteredQuizList.length > 0 ? (
@@ -161,7 +167,7 @@ function Quizs() {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => handleTakeQuiz(quiz.quizId)}
+                    onClick={() => handleTakeQuiz(quiz.quizId,quiz.timelimit)}
                     style={{ marginTop: "10px" }}
                   >
                     Take Quiz

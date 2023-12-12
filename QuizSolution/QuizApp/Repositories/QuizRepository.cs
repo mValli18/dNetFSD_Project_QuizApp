@@ -8,7 +8,6 @@ namespace QuizApp.Repositories
     public class QuizRepository : IRepository<int, Quiz>
     {
         private readonly QuizContext _context;
-        private Quiz quiz;
 
         public QuizRepository(QuizContext context)
         {
@@ -23,12 +22,12 @@ namespace QuizApp.Repositories
 
         public Quiz Delete(int key)
         {
-            var product = GetById(key);
-            if (product != null)
+            var quiz = GetById(key);
+            if (quiz != null)
             {
                 _context.Quizs.Remove(quiz);
                 _context.SaveChanges();
-                return product;
+                return quiz;
             }
             return null;
         }
@@ -58,5 +57,6 @@ namespace QuizApp.Repositories
             }
             return null;
         }
+
     }
 }

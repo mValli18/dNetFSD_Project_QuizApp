@@ -28,7 +28,7 @@ namespace QuizApp.Controllers
                     return Ok(user);
                 }
             }
-            catch (DbUpdateException exp)
+            catch (DbUpdateException)
             {
                 message = "Duplicate username";
             }

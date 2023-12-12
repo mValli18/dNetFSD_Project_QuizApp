@@ -23,6 +23,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HistoryIcon from '@mui/icons-material/History';
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 import ManageQuestions from './Questions';
 import ManageQuizs from './ManageQuizs';
@@ -136,13 +137,14 @@ export default function Navigation() {
         </ListItemButton>
         </ListItem>
         </Link>
+        <Link to="/quizreport">
         <ListItem Padding >
         <ListItemButton>
                <ListItemIcon><HistoryIcon/></ListItemIcon>
-                <ListItemText primary="QuizHistory" />
+                <ListItemText primary="QuizReports" />
                 </ListItemButton>
         </ListItem>
-        
+        </Link>
 
         <Link to="/leaderboard" >
         <ListItem Padding >
@@ -158,6 +160,15 @@ export default function Navigation() {
         <ListItemButton>
                <ListItemIcon><EditNoteIcon  /></ListItemIcon>
                 <ListItemText primary="Create" />
+                </ListItemButton>
+        </ListItem>
+        </Link>
+        
+        <Link to="/logout" >
+        <ListItem Padding >
+        <ListItemButton>
+               <ListItemIcon>< LogoutIcon/></ListItemIcon>
+                <ListItemText primary="Logout" />
                 </ListItemButton>
         </ListItem>
         </Link>

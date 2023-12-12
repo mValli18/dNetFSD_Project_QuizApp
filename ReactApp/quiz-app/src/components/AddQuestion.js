@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import "./AddQuestion.css";
 function AddQuestion(){
     const [questionTxt,setQuestionTxt] = useState("");
     const [option1,setOption1] = useState("");
@@ -8,9 +9,10 @@ function AddQuestion(){
     const [option4,setOption4]= useState("");
     const [answer,setAnswer] = useState("");
     const[quizId,setQuizId]= useState(0);
+    const navigate = useNavigate();
+    const token=localStorage.getItem("token");
     var question;
     var clickAdd = ()=>{
-        alert('You clicked the button');
        question={
         "questionTxt":questionTxt,
         "option1":option1,
@@ -25,12 +27,13 @@ function AddQuestion(){
             method:'POST',
             headers:{
                 'Accept':'application/json',
+                Authorization: `Bearer ${token}`,
                 'Content-Type':'application/json'
             },
             body:JSON.stringify(question)
         }).then(
             ()=>{
-                alert("Question Added");
+                alert("Question Added Successfully");
             }
         ).catch((e)=>{
             console.log(e)
@@ -40,6 +43,7 @@ function AddQuestion(){
 
     return(
         <div className="inputcontainer">
+            <h2 className="alert alert-quiz">Add Questions</h2>
             <label className="form-control" htmlFor="qutxt">Question</label>
             <input id="qutxt" type="text" className="form-control" value={questionTxt} onChange={(e)=>{setQuestionTxt(e.target.value)}}/>
             <label className="form-control"  htmlFor="quopt1">Option A</label>

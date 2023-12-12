@@ -22,6 +22,7 @@ import Profile from './UserProfile';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HistoryIcon from '@mui/icons-material/History';
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
@@ -87,20 +88,24 @@ export default function Navigation() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} sx={{ backgroundColor: `#383838` }}>
-        <Toolbar  >
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-         QUIZ APP
-          </Typography>
-        </Toolbar>
+      <Toolbar>
+  <IconButton
+    color="inherit"
+    aria-label="open drawer"
+    onClick={handleDrawerOpen}
+    edge="start"
+    sx={{ mr: 1 }}
+  >
+    <MenuIcon />
+  </IconButton>
+
+  <div style={{ flex: 1 }}>
+    <Typography variant="h6" noWrap component="div" sx={{ textAlign: 'center' }}>
+      QUIZ APP
+    </Typography>
+  </div>
+</Toolbar>
+
       </AppBar>
       <Drawer
         sx={{
@@ -133,15 +138,8 @@ export default function Navigation() {
         </ListItemButton>
         </ListItem>
         </Link>
-        <ListItem Padding >
-        <ListItemButton>
-               <ListItemIcon><HistoryIcon/></ListItemIcon>
-                <ListItemText primary="QuizHistory" />
-                </ListItemButton>
-        </ListItem>
-        
 
-        <Link to="/leaderboard" >
+         <Link to="/leaderboard" >
         <ListItem Padding >
         <ListItemButton>
                <ListItemIcon>< LeaderboardIcon/></ListItemIcon>
@@ -149,7 +147,15 @@ export default function Navigation() {
                 </ListItemButton>
         </ListItem>
         </Link>
-        
+
+        <Link to="/logout" >
+        <ListItem Padding >
+        <ListItemButton>
+               <ListItemIcon>< LogoutIcon/></ListItemIcon>
+                <ListItemText primary="Logout" />
+                </ListItemButton>
+        </ListItem>
+        </Link>
         </List>
     
         

@@ -11,7 +11,10 @@ namespace QuizApp.Interfaces
         Task<Quiz> GetQuizByIdWithQuestions(int id);
         List<Quiz> GetQuizzesByCategory(string category);
         bool DeleteQuizIfNoQuestions(int quizId);
-        void UpdateQuiz(Quiz updatedQuiz);
+        List<string> GetCategories();
+        List<string> GetTitles();
+        int GetId(string title);
+        Quiz UpdateQuiz(Quiz updatedQuiz);
         //public Quiz StartQuiz(int quizId);
     }
 }
