@@ -22,7 +22,7 @@ function AddQuiz() {
 
     console.log(quiz);
 
-    fetch("http://localhost:5252/api/Quiz", {
+    fetch("http://localhost:5057/api/Quiz", {
       method: "POST",
       headers: {
         Accept: "application/json",

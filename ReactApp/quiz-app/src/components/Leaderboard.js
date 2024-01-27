@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, TextField, Typography, List, ListItem, ListItemText, Container, Paper, Grid } from "@mui/material";
 import { GetApp } from "@mui/icons-material";
 import "./Leaderboard.css";
-import GotoQuizs from './GotoQuizs';
+
 function Leaderboard() {
   const [quizId, setQuizId] = useState("");
   const [leaderboard, setLeaderboard] = useState(null);
@@ -117,7 +117,7 @@ function Leaderboard() {
 
   return (
     <div className="inputcontainer">
-      <GotoQuizs />
+     
       <h2 className="alert alert-quiz">Leaderboard</h2>
       <div className="d-flex align-items-center flex">
         <select
